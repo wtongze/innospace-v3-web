@@ -1,6 +1,6 @@
 <template>
   <v-container class="home pa-0 mt-3" fluid>
-    <div class="header">
+    <div class="header px-1">
       <v-row
         justify="center"
         align="center"
