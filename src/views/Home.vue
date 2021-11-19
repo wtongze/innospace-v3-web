@@ -1,26 +1,32 @@
 <template>
   <v-container class="home pa-0 mt-3" fluid>
     <div class="header">
-      <v-row justify="center" align="center">
+      <v-row justify="center" align="center" class="my-16">
         <v-col class="pa-4" cols="12" md="4">
           <h1 class="font-weight-bold text-h3 mb-2">InnoSpace,</h1>
           <h2 class="font-weight-medium" style="line-height: 30px">
-            where <span class="marker-text">talented student</span> meet
-            <span class="marker-text">project owners</span> and build great things together.
+            where <span class="marker-text text-primary">talented student</span> meet
+            <span class="marker-text text-primary">project owners</span> and build great things
+            together.
           </h2>
           <v-card elevation="0" class="rounded-lg mt-6" color="#f5f9fc">
-            <v-card-title class="py-3">
-              <v-icon class="mr-4">mdi-trophy</v-icon>
-              2019 UCSC Springboard Award Winner
-              <v-spacer></v-spacer>
-              <v-btn
-                icon
-                href="https://officeofresearch.ucsc.edu/iatc/commercialization-/services/springboard-awardees.html"
-                target="_blank"
-              >
-                <v-icon> mdi-open-in-new </v-icon>
-              </v-btn>
-            </v-card-title>
+            <v-row align="center" class="py-3 px-4" no-gutters>
+              <v-col cols="1">
+                <v-icon>mdi-trophy</v-icon>
+              </v-col>
+              <v-col>
+                <div>2019 UCSC Springboard Award Winner</div>
+              </v-col>
+              <v-col cols="1">
+                <v-btn
+                  icon
+                  href="https://officeofresearch.ucsc.edu/iatc/commercialization-/services/springboard-awardees.html"
+                  target="_blank"
+                >
+                  <v-icon> mdi-open-in-new </v-icon>
+                </v-btn>
+              </v-col>
+            </v-row>
           </v-card>
           <div class="mt-6">
             <div>Sponsored By</div>
@@ -36,38 +42,51 @@
       </v-row>
     </div>
     <div class="role pa-4">
-      <h2 class="text-center font-weight-medium mt-3">Choose your role...</h2>
-      <div class="mx-auto">
-        <v-row align="center" justify="center" class="ma-0">
-          <v-col cols="4">
-            <img
-              :src="require('@/assets/talented-student.svg')"
-              height="400"
-              class="d-block mx-auto"
-            />
-          </v-col>
-          <v-col cols="4">
-            <h2>Talented Student</h2>
-            <p style="font-size: 20px">
-              who want to have more job-related exprience before graduating?
-            </p>
-          </v-col>
-        </v-row>
-        <v-row align="center" justify="center" class="ma-0 mt-n6">
-          <v-col cols="4">
-            <img
-              :src="require('@/assets/project-owner.svg')"
-              height="400"
-              class="d-block mx-auto"
-            />
-          </v-col>
-          <v-col cols="4">
-            <h2>Project Owner</h2>
-            <p style="font-size: 20px">
-              who want to get more talented students to help builing your awesome project?
-            </p>
-          </v-col>
-        </v-row>
+      <h2 class="text-center mt-3">Choose your role ...</h2>
+      <div class="role-cards">
+        <div style="width: 55%" class="mx-auto my-8 role-card">
+          <v-row align="center" class="ma-0">
+            <v-col class="ma-n8">
+              <img
+                :src="require('@/assets/talented-student.svg')"
+                height="300"
+                class="d-block mx-auto"
+              />
+            </v-col>
+            <v-col class="pa-8">
+              <h2>Talented Student</h2>
+              <p style="font-size: 18px">
+                who want to have more job-related exprience before graduating?
+              </p>
+              <v-btn depressed color="primary" class="mt-1" width="250">
+                <v-icon left dark> mdi-magnify </v-icon>
+                Search for position
+              </v-btn>
+            </v-col>
+          </v-row>
+        </div>
+
+        <div style="width: 55%" class="mx-auto my-8 role-card">
+          <v-row align="center" class="ma-0">
+            <v-col class="ma-n8">
+              <img
+                :src="require('@/assets/project-owner.svg')"
+                height="300"
+                class="d-block mx-auto"
+              />
+            </v-col>
+            <v-col class="pa-8">
+              <h2>Project Owner</h2>
+              <p style="font-size: 18px">
+                who want to get more talented students to help builing your awesome project?
+              </p>
+              <v-btn depressed color="primary" class="mt-1" width="250">
+                <v-icon left dark> mdi-plus </v-icon>
+                Submit your project
+              </v-btn>
+            </v-col>
+          </v-row>
+        </div>
       </div>
     </div>
   </v-container>
@@ -99,12 +118,26 @@ export default Vue.extend({
 <style scoped>
 .marker-text {
   font-family: 'Permanent Marker', cursive;
-  color: #1976d2;
   font-size: 32px;
   letter-spacing: 2px;
 }
 
+.text-primary {
+  color: #1976d2;
+}
+
 .role {
   background-color: #f5f9fc;
+}
+
+.role-card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 0 24px #e8e8e8;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.role-card:hover {
+  box-shadow: 0 0 96px #e0e0e0;
 }
 </style>
