@@ -1,7 +1,12 @@
 <template>
   <v-container class="home pa-0 mt-3" fluid>
     <div class="header">
-      <v-row justify="center" align="center" class="my-16">
+      <v-row
+        justify="center"
+        align="center"
+        :class="$vuetify.breakpoint.mobile ? 'my-4' : 'my-16'"
+        no-gutters
+      >
         <v-col class="pa-4" cols="12" md="4">
           <h1 class="font-weight-bold text-h3 mb-2">InnoSpace,</h1>
           <h2 class="font-weight-medium" style="line-height: 30px">
@@ -15,7 +20,7 @@
                 <v-icon>mdi-trophy</v-icon>
               </v-col>
               <v-col>
-                <div>2019 UCSC Springboard Award Winner</div>
+                <div class="px-2">2019 UCSC Springboard Award Winner</div>
               </v-col>
               <v-col cols="1">
                 <v-btn
@@ -32,7 +37,12 @@
             <div>Sponsored By</div>
             <a target="_blank" href="https://officeofresearch.ucsc.edu/iatc/">
               <img :src="require('@/assets/ucsc.jpg')" height="50" class="d-inline-block ml-n3" />
-              <img :src="require('@/assets/iatc.png')" height="50" class="d-inline-block ml-2" />
+              <img
+                :src="require('@/assets/iatc.png')"
+                height="50"
+                class="d-inline-block"
+                :class="$vuetify.breakpoint.mobile ? 'ml-n1 mt-n4' : 'ml-2'"
+              />
             </a>
           </div>
         </v-col>
@@ -44,9 +54,12 @@
     <div class="role pa-4">
       <h2 class="text-center mt-3">Choose your role ...</h2>
       <div class="role-cards">
-        <div style="width: 55%" class="mx-auto my-8 role-card">
+        <div
+          :style="$vuetify.breakpoint.mobile ? 'width: 100%' : 'width: 55%'"
+          class="mx-auto my-8 role-card"
+        >
           <v-row align="center" class="ma-0">
-            <v-col class="ma-n8">
+            <v-col :class="$vuetify.breakpoint.xs ? 'ma-n3 mb-n12' : 'ma-n8'">
               <img
                 :src="require('@/assets/talented-student.svg')"
                 height="300"
@@ -58,7 +71,13 @@
               <p style="font-size: 18px">
                 who want to have more job-related exprience before graduating?
               </p>
-              <v-btn depressed color="primary" class="mt-1" width="250">
+              <v-btn
+                depressed
+                :block="$vuetify.breakpoint.xs"
+                color="primary"
+                class="mt-1"
+                width="250"
+              >
                 <v-icon left dark> mdi-magnify </v-icon>
                 Search for position
               </v-btn>
@@ -66,9 +85,12 @@
           </v-row>
         </div>
 
-        <div style="width: 55%" class="mx-auto my-8 role-card">
+        <div
+          :style="$vuetify.breakpoint.mobile ? 'width: 100%' : 'width: 55%'"
+          class="mx-auto my-8 role-card"
+        >
           <v-row align="center" class="ma-0">
-            <v-col class="ma-n8">
+            <v-col :class="$vuetify.breakpoint.xs ? 'ma-n3 mb-n12' : 'ma-n8'">
               <img
                 :src="require('@/assets/project-owner.svg')"
                 height="300"
@@ -80,7 +102,13 @@
               <p style="font-size: 18px">
                 who want to get more talented students to help builing your awesome project?
               </p>
-              <v-btn depressed color="primary" class="mt-1" width="250">
+              <v-btn
+                depressed
+                color="primary"
+                :block="$vuetify.breakpoint.xs"
+                class="mt-1"
+                width="250"
+              >
                 <v-icon left dark> mdi-plus </v-icon>
                 Submit your project
               </v-btn>
