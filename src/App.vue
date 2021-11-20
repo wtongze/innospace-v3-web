@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" dark flat>
-      <v-app-bar-title>InnoSpace</v-app-bar-title>
+      <div class="title" @click="goHome">InnoSpace</div>
       <v-spacer></v-spacer>
       <v-btn text>Login</v-btn>
     </v-app-bar>
@@ -17,14 +17,14 @@
         </v-col>
         <v-col class="text-right">
           <div class="d-flex justify-end flex-column flex-md-row">
-            <router-link to="/terms-of-service" class="clean-link mx-sm-2">
-              Terms of Service
+            <router-link to="/terms-and-conditions" class="clean-link mx-sm-2">
+              Terms and Conditions
             </router-link>
             <router-link to="/privacy-policy" class="clean-link mx-sm-2">
               Privacy Policy
             </router-link>
-            <router-link to="/cookie-policy" class="clean-link mx-sm-2">
-              Cookie Policy
+            <router-link to="/cookies-policy" class="clean-link mx-sm-2">
+              Cookies Policy
             </router-link>
           </div>
         </v-col>
@@ -42,16 +42,39 @@ export default Vue.extend({
   data: () => ({
     //
   }),
+
+  methods: {
+    goHome() {
+      if (this.$route.path !== '/') {
+        this.$router.push('/');
+      }
+    },
+  },
 });
 </script>
 
-<style>
-.v-app-bar-title__content {
-  width: 100%;
+<style scoped>
+.title {
+  font-size: 20px;
+  cursor: pointer;
 }
+</style>
 
+<style>
 .clean-link {
   color: #000 !important;
   text-decoration: none;
+}
+
+.legal-doc {
+  word-break: break-word;
+}
+
+.legal-doc h1,
+.legal-doc h2,
+.legal-doc h3 {
+  line-height: 1.25;
+  margin-bottom: 4px;
+  margin-top: 16px;
 }
 </style>

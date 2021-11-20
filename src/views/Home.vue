@@ -1,12 +1,7 @@
 <template>
   <v-container class="home pa-0 mt-3" fluid>
     <div class="header px-1">
-      <v-row
-        justify="center"
-        align="center"
-        :class="$vuetify.breakpoint.mobile ? 'my-4' : 'my-16'"
-        no-gutters
-      >
+      <v-row justify="center" align="center" :class="isMobile ? 'my-4' : 'my-16'" no-gutters>
         <v-col class="pa-4" cols="12" md="4">
           <h1 class="font-weight-bold text-h3 mb-2">InnoSpace,</h1>
           <h2 class="font-weight-medium" style="line-height: 30px">
@@ -36,30 +31,31 @@
           <div class="mt-6">
             <div>Sponsored By</div>
             <a target="_blank" href="https://officeofresearch.ucsc.edu/iatc/">
-              <img :src="require('@/assets/ucsc.jpg')" height="50" class="d-inline-block ml-n3" />
+              <img
+                :src="require('@/assets/ucsc.jpg')"
+                height="50"
+                class="d-inline-block ml-n3 pr-2"
+              />
               <img
                 :src="require('@/assets/iatc.png')"
                 height="50"
-                class="d-inline-block"
-                :class="$vuetify.breakpoint.mobile ? 'ml-n1 mt-n4' : 'ml-2'"
+                class="d-inline-block ml-n1"
+                :class="isMobile ? 'mt-n4' : ''"
               />
             </a>
           </div>
         </v-col>
         <v-col cols="12" md="4">
-          <div id="animate" style="max-height: 500px"></div>
+          <div id="animate" class="d-flex align-center"></div>
         </v-col>
       </v-row>
     </div>
     <div class="role pa-4">
       <h2 class="text-center mt-3">Choose your role ...</h2>
       <div class="role-cards">
-        <div
-          :style="$vuetify.breakpoint.mobile ? 'width: 100%' : 'width: 55%'"
-          class="mx-auto my-8 role-card"
-        >
+        <div :style="isMobile ? 'width: 100%' : 'width: 55%'" class="mx-auto my-8 role-card">
           <v-row align="center" class="ma-0">
-            <v-col :class="$vuetify.breakpoint.xs ? 'ma-n3 mb-n12' : 'ma-n8'">
+            <v-col :class="isXs ? 'ma-n3 mb-n12' : 'ma-n8'">
               <img
                 :src="require('@/assets/talented-student.svg')"
                 height="300"
@@ -71,13 +67,7 @@
               <p style="font-size: 18px">
                 who want to have more job-related exprience before graduating?
               </p>
-              <v-btn
-                depressed
-                :block="$vuetify.breakpoint.xs"
-                color="primary"
-                class="mt-1"
-                width="250"
-              >
+              <v-btn depressed :block="isXs" color="primary" class="mt-1" width="250">
                 <v-icon left dark> mdi-magnify </v-icon>
                 Search for position
               </v-btn>
@@ -85,12 +75,9 @@
           </v-row>
         </div>
 
-        <div
-          :style="$vuetify.breakpoint.mobile ? 'width: 100%' : 'width: 55%'"
-          class="mx-auto my-8 role-card"
-        >
+        <div :style="isMobile ? 'width: 100%' : 'width: 55%'" class="mx-auto my-8 role-card">
           <v-row align="center" class="ma-0">
-            <v-col :class="$vuetify.breakpoint.xs ? 'ma-n3 mb-n12' : 'ma-n8'">
+            <v-col :class="isXs ? 'ma-n3 mb-n12' : 'ma-n8'">
               <img
                 :src="require('@/assets/project-owner.svg')"
                 height="300"
@@ -102,13 +89,7 @@
               <p style="font-size: 18px">
                 who want to get more talented students to help builing your awesome project?
               </p>
-              <v-btn
-                depressed
-                color="primary"
-                :block="$vuetify.breakpoint.xs"
-                class="mt-1"
-                width="250"
-              >
+              <v-btn depressed color="primary" :block="isXs" class="mt-1" width="250">
                 <v-icon left dark> mdi-plus </v-icon>
                 Submit your project
               </v-btn>
@@ -127,6 +108,18 @@ import animationData from '@/assets/scene.json';
 
 export default Vue.extend({
   name: 'Home',
+
+  computed: {
+    isMobile() {
+      return this.$vuetify.breakpoint.mobile;
+    },
+    isXs() {
+      return this.$vuetify.breakpoint.xs;
+    },
+    isMd() {
+      return this.$vuetify.breakpoint.md;
+    },
+  },
 
   mounted() {
     const element = document.getElementById('animate');
