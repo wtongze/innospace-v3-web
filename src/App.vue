@@ -3,7 +3,7 @@
     <v-app-bar app color="primary" dark flat>
       <div class="title" @click="goHome">InnoSpace</div>
       <v-spacer></v-spacer>
-      <v-btn text>Login</v-btn>
+      <v-btn text to="/login" v-if="$route.path !== '/login'">Login</v-btn>
     </v-app-bar>
 
     <v-main>

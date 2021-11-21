@@ -36,6 +36,11 @@ const routes: Array<RouteConfig> = [
       // eslint-disable-next-line implicit-arrow-linebreak
       import(/* webpackChunkName: "terms-and-conditions" */ '../views/PrivacyPolicy.vue'),
   },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+  },
 ];
 
 const router = new VueRouter({
