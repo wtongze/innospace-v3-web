@@ -18,7 +18,7 @@
           prepend-inner-icon="mdi-lock"
           label="Password"
         ></v-text-field>
-        <v-btn color="primary" elevation="0" block class="mb-4"> Sign in </v-btn>
+        <v-btn color="primary" elevation="0" block class="mb-4" to="/dashboard"> Sign in </v-btn>
         <v-divider></v-divider>
         <v-btn color="#f1f3f5" elevation="0" block class="mt-4 text-no-transform">
           SIGN IN with Google
