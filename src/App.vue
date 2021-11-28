@@ -161,13 +161,7 @@ export default Vue.extend({
       ].includes(this.$route.path);
     },
     showNavDrawer() {
-      return ![
-        '/',
-        '/login',
-        '/terms-and-conditions',
-        '/privacy-policy',
-        '/cookies-policy',
-      ].includes(this.$route.path);
+      return this.$route.path.includes('/my/');
     },
     mdAndUp() {
       return this.$vuetify.breakpoint.mdAndUp;
