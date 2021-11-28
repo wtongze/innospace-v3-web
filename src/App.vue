@@ -3,7 +3,7 @@
     <v-app-bar app color="primary" dark flat clipped-left>
       <v-app-bar-nav-icon
         @click.stop="drawer = !drawer"
-        v-if="showNavDrawer && !$vuetify.breakpoint.mdAndUp"
+        v-if="showNavDrawer && !$vuetify.breakpoint.lgAndUp"
       ></v-app-bar-nav-icon>
       <div class="title" @click="goHome">InnoSpace</div>
       <v-spacer></v-spacer>
@@ -18,11 +18,10 @@
       app
       clipped
       floating
-      disable-resize-watcher
       color="#fafafa"
       class="nav-drawer"
       v-if="showNavDrawer"
-      v-model="drawerControl"
+      v-model="drawer"
       height="100%"
     >
       <v-list class="px-2">
@@ -110,24 +109,29 @@ export default Vue.extend({
     drawer: false,
     navItems: [
       {
-        to: '/dashboard',
+        to: '/my/dashboard',
         icon: 'mdi-view-dashboard',
         title: 'Dashboard',
       },
       {
-        to: '/dashboard/project',
+        to: '/explore',
+        icon: 'mdi-compass',
+        title: 'Explore',
+      },
+      {
+        to: '/my/project',
         icon: 'mdi-cube',
         title: 'Project',
       },
       {
-        to: '/dashboard/application',
+        to: '/my/application',
         icon: 'mdi-inbox',
         title: 'Application',
       },
       {
-        to: '/dashboard/explore',
-        icon: 'mdi-compass',
-        title: 'Explore',
+        to: '/my/profile',
+        icon: 'mdi-account',
+        title: 'Profile',
       },
     ] as { to: string; icon: string; title: string }[],
     legalItems: [
@@ -167,17 +171,6 @@ export default Vue.extend({
     },
     mdAndUp() {
       return this.$vuetify.breakpoint.mdAndUp;
-    },
-    drawerControl: {
-      get() {
-        if (this.$vuetify.breakpoint.mdAndUp) {
-          return true;
-        }
-        return this.drawer;
-      },
-      set(val: boolean) {
-        this.drawer = val;
-      },
     },
   },
 

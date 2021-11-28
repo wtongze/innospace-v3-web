@@ -18,11 +18,9 @@
           prepend-inner-icon="mdi-lock"
           label="Password"
         ></v-text-field>
-        <v-btn color="primary" elevation="0" block class="mb-4" to="/dashboard"> Sign in </v-btn>
+        <v-btn color="primary" elevation="0" block class="mb-4"> Sign in </v-btn>
         <v-divider></v-divider>
-        <v-btn color="#f1f3f5" elevation="0" block class="mt-4 text-no-transform">
-          SIGN IN with Google
-        </v-btn>
+        <div id="firebaseui-auth-container" class="mb-n4"></div>
       </v-card-text>
     </v-card>
   </v-container>
@@ -30,6 +28,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import firebase from 'firebase/compat/app';
+import * as firebaseui from 'firebaseui';
+import 'firebaseui/dist/firebaseui.css';
 
 export default Vue.extend({
   name: 'Login',
@@ -37,6 +38,26 @@ export default Vue.extend({
     mdAndUp() {
       return this.$vuetify.breakpoint.mdAndUp;
     },
+  },
+  data: () => ({
+    auth: undefined,
+  }),
+  mounted() {
+    const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
+    const uiConfig = {
+      callbacks: {
+        signInSuccessWithAuthResult: () => {
+          ui.delete();
+          this.$router.push('/my/dashboard');
+          return false;
+        },
+      },
+      signInFlow: 'popup',
+      signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+      tosUrl: '/terms-and-conditions',
+      privacyPolicyUrl: '/privacy-policy',
+    };
+    ui.start('#firebaseui-auth-container', uiConfig);
   },
 });
 </script>
@@ -74,5 +95,11 @@ export default Vue.extend({
 
 .login-card-text-field .v-text-field__slot {
   margin: 0 8px !important;
+}
+
+button.mdl-button {
+  border-radius: 4px !important;
+  box-shadow: none;
+  border: 2px solid #f1f3f5;
 }
 </style>
