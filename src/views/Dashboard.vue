@@ -9,7 +9,7 @@
         />
       </v-col>
       <v-col :cols="mdAndUp ? 7 : undefined">
-        <h1 class="text-h5 font-weight-bold">Hi Tongze Wang,</h1>
+        <h1 class="text-h5 font-weight-bold">Hi {{ name }},</h1>
         <p class="mt-4 text-body-1">
           Nothing new here yet. You can check the navigation bar on the left to explore other
           projects on InnoSpace or track applications status. For project-owners, you can also edit
@@ -29,6 +29,13 @@ export default Vue.extend({
     mdAndUp() {
       return this.$vuetify.breakpoint.mdAndUp;
     },
+    name() {
+      return this.$store.state.user?.displayName;
+    },
+  },
+  mounted() {
+    console.log('mounted');
+    this.$emit('dashboard-mount');
   },
 });
 </script>

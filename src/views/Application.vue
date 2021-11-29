@@ -1,26 +1,10 @@
 <template>
-  <v-container class="application">
+  <v-container class="application pa-md-8">
     <h1>Application</h1>
-    <div class="d-flex align-center justify-space-between mt-2 mb-n4">
-      <v-tabs v-model="mode" style="margin-top: -28px">
-        <v-tab>Sent</v-tab>
-        <v-tab>Received</v-tab>
-      </v-tabs>
-      <v-select
-        label="Sort"
-        :items="sortOptions"
-        solo
-        class="sort-select mr-4"
-        dense
-      ></v-select>
-      <v-text-field
-        solo
-        dense
-        label="Filter"
-        class="sort-select"
-        clearable
-      ></v-text-field>
-    </div>
+    <v-tabs v-model="mode">
+      <v-tab>Sent</v-tab>
+      <v-tab>Received</v-tab>
+    </v-tabs>
     <div>
       <application-card></application-card>
     </div>

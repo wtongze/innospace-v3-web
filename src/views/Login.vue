@@ -18,7 +18,7 @@
           prepend-inner-icon="mdi-lock"
           label="Password"
         ></v-text-field>
-        <v-btn color="primary" elevation="0" block class="mb-4"> Sign in </v-btn>
+        <v-btn color="primary" elevation="0" block class="mb-4 mt-4"> Sign in </v-btn>
         <v-divider></v-divider>
         <div id="firebaseui-auth-container" class="mb-n4"></div>
       </v-card-text>
@@ -43,6 +43,9 @@ export default Vue.extend({
     auth: undefined,
   }),
   mounted() {
+    if (this.$store.state.user) {
+      this.$router.push('/my/dashboard');
+    }
     const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(firebase.auth());
     const uiConfig = {
       callbacks: {
@@ -52,7 +55,7 @@ export default Vue.extend({
           return false;
         },
       },
-      signInFlow: 'popup',
+      signInFlow: this.mdAndUp ? 'popup' : 'redirect',
       signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
       tosUrl: '/terms-and-conditions',
       privacyPolicyUrl: '/privacy-policy',

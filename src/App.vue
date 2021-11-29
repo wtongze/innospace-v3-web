@@ -7,11 +7,13 @@
       ></v-app-bar-nav-icon>
       <div class="title" @click="goHome">InnoSpace</div>
       <v-spacer></v-spacer>
-      <v-btn text to="/login" v-if="$route.path !== '/login'">Login</v-btn>
+      <v-btn text to="/login" v-if="showLoginBtn"> Login </v-btn>
+      <v-btn text @click="$router.push('/my/dashboard')" v-if="showDashboardBtn"> Dashboard </v-btn>
+      <v-btn text @click="logout" v-if="showLogoutBtn"> Logout </v-btn>
     </v-app-bar>
 
     <v-main>
-      <router-view />
+      <router-view @dashboard-mount="toggleDrawer" />
     </v-main>
 
     <v-navigation-drawer
@@ -23,18 +25,20 @@
       v-if="showNavDrawer"
       v-model="drawer"
       height="100%"
+      :width="mdAndUp ? '300' : '80%'"
+      :permanent="$vuetify.breakpoint.lgAndUp"
     >
       <v-list class="px-2">
         <v-list-item two-line>
           <v-list-item-avatar size="40">
-            <img src="https://randomuser.me/api/portraits/men/85.jpg" width="40" height="40" />
+            <img :src="photoURL" width="40" height="40" />
           </v-list-item-avatar>
 
           <v-list-item-content>
             <v-list-item-title>
-              <b>Tongze Wang</b>
+              <b>{{ name }}</b>
             </v-list-item-title>
-            <v-list-item-title>wtongze@ucsc.edu</v-list-item-title>
+            <v-list-item-title>{{ email }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -101,6 +105,8 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 export default Vue.extend({
   name: 'App',
@@ -114,7 +120,7 @@ export default Vue.extend({
         title: 'Dashboard',
       },
       {
-        to: '/explore',
+        to: '/my/explore',
         icon: 'mdi-compass',
         title: 'Explore',
       },
@@ -163,8 +169,30 @@ export default Vue.extend({
     showNavDrawer() {
       return this.$route.path.includes('/my/');
     },
+    showDashboardBtn() {
+      return (
+        !['/login'].includes(this.$route.path) &&
+        !this.$route.path.startsWith('/my/') &&
+        this.$store.state.user
+      );
+    },
+    showLoginBtn() {
+      return !['/login'].includes(this.$route.path) && !this.$store.state.user;
+    },
+    showLogoutBtn() {
+      return !['/login'].includes(this.$route.path) && this.$store.state.user;
+    },
     mdAndUp() {
       return this.$vuetify.breakpoint.mdAndUp;
+    },
+    name() {
+      return this.$store.state.user?.displayName;
+    },
+    email() {
+      return this.$store.state.user?.email;
+    },
+    photoURL() {
+      return this.$store.state.user?.photoURL;
     },
   },
 
@@ -174,6 +202,28 @@ export default Vue.extend({
         this.$router.push('/');
       }
     },
+    async logout() {
+      await firebase.auth().signOut();
+      this.$router.push('/');
+    },
+    toggleDrawer() {
+      if (this.$vuetify.breakpoint.smAndDown) {
+        // setTimeout(() => {
+        //   this.drawer = false;
+        // }, 50);
+      }
+      console.log(this.drawer);
+    },
+  },
+
+  mounted() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.commit('setUser', user);
+      } else {
+        this.$store.commit('setUser', undefined);
+      }
+    });
   },
 });
 </script>
@@ -196,11 +246,6 @@ export default Vue.extend({
 .nav-legal {
   color: #7d7d7d;
   font-size: 14px;
-}
-
-.nav-drawer {
-  width: 80% !important;
-  max-width: 300px;
 }
 
 .footer {

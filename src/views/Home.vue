@@ -54,7 +54,7 @@
       <h2 class="text-center mt-3">Choose your role ...</h2>
       <div class="role-cards">
         <div :style="isMobile ? 'width: 100%' : 'width: 55%'" class="mx-auto my-8 role-card">
-          <v-row align="center" class="ma-0">
+          <v-row align="center" class="ma-0" justify="center">
             <v-col :class="isXs ? 'ma-n3 mb-n12' : 'ma-n8'">
               <img
                 :src="require('@/assets/talented-student.svg')"
@@ -76,7 +76,7 @@
         </div>
 
         <div :style="isMobile ? 'width: 100%' : 'width: 55%'" class="mx-auto my-8 role-card">
-          <v-row align="center" class="ma-0">
+          <v-row align="center" class="ma-0" justify="center">
             <v-col :class="isXs ? 'ma-n3 mb-n12' : 'ma-n8'">
               <img
                 :src="require('@/assets/project-owner.svg')"

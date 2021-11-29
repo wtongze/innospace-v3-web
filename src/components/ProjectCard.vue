@@ -1,5 +1,5 @@
 <template>
-  <div class="project-card px-8 py-4 my-4">
+  <div class="project-card pa-4 px-md-8 my-4 rounded-lg">
     <div class="d-flex align-center justify-space-between">
       <div class="d-flex align-center">
         <v-img
@@ -10,18 +10,8 @@
         ></v-img>
         <h3>InnoSpace</h3>
       </div>
-      <div class="d-flex meta-box">
-        <div class="meta-item">
-          <h4 class="font-weight-medium">Type</h4>
-          <div>Student-Lead</div>
-        </div>
-        <div class="meta-item">
-          <h4 class="font-weight-medium">Field</h4>
-          <div>Web App</div>
-        </div>
-      </div>
     </div>
-    <div class="tags mt-4">
+    <div class="tags mt-2">
       <v-chip label class="tag">Node.js</v-chip>
       <v-chip label class="tag">TypeScript</v-chip>
       <v-chip label class="tag">Jest</v-chip>
@@ -34,7 +24,7 @@
         reprehenderit modi voluptate aliquid dolorum eum...
       </p>
     </div>
-    <div class="action mt-4 d-flex justify-space-between">
+    <div class="action mt-4 d-flex justify-space-between align-center">
       <div class="font-weight-medium">5 Open Positions</div>
       <v-btn link color="#f7f7f7" depressed to="/project/innospace">
         Learn More
@@ -53,23 +43,14 @@ export default Vue.extend({
 
 <style scoped>
 .project-card {
-  border: 1px rgba(0, 0, 0, 0.12) solid;
-  border-radius: 8px;
-}
-
-.meta-box {
-  background-color: #f7f7f7;
-  padding: 16px;
-  border-radius: 8px;
-}
-
-.meta-item {
-  margin-right: 16px;
-  width: 125px;
+  border: 2px solid #f1f3f5;
 }
 
 .tag {
   margin-right: 8px;
+  margin-top: 8px;
   font-weight: 500;
+  border-radius: 4px !important;
+  background-color: #f1f3f5 !important;
 }
 </style>

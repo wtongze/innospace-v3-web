@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
+import store from '../store';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -44,24 +43,24 @@ const routes: Array<RouteConfig> = [
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
   },
   {
-    path: '/explore',
-    name: 'Explore',
-    component: () => import(/* webpackChunkName: "explore" */ '../views/Explore.vue'),
-  },
-  {
     path: '/my/dashboard',
     name: 'Dashboard',
-    component: () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue'),
+    component: () => import(/* webpackChunkName: "my-dashboard" */ '../views/Dashboard.vue'),
+  },
+  {
+    path: '/my/explore',
+    name: 'Explore',
+    component: () => import(/* webpackChunkName: "my-explore" */ '../views/Explore.vue'),
   },
   {
     path: '/my/project',
     name: 'MyProject',
-    component: () => import(/* webpackChunkName: "project" */ '../views/Project.vue'),
+    component: () => import(/* webpackChunkName: "my-project" */ '../views/Project.vue'),
   },
   {
     path: '/my/application',
     name: 'MyApplication',
-    component: () => import(/* webpackChunkName: "application" */ '../views/Application.vue'),
+    component: () => import(/* webpackChunkName: "my-application" */ '../views/Application.vue'),
   },
 ];
 
@@ -72,10 +71,8 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // const isAuthenticated = firebase.auth().currentUser;
-  console.log(firebase.auth().currentUser);
-  const isAuthenticated = true;
-  if (to.path.includes('/my') && isAuthenticated === null) next({ name: 'Login' });
+  const isAuthenticated = store.state.user !== undefined;
+  if (to.path.includes('/my') && isAuthenticated === false) next({ name: 'Login' });
   else next();
 });
 
