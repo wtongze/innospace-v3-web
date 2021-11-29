@@ -33,10 +33,6 @@ export default Vue.extend({
       return this.$store.state.user?.displayName;
     },
   },
-  mounted() {
-    console.log('mounted');
-    this.$emit('dashboard-mount');
-  },
 });
 </script>
 

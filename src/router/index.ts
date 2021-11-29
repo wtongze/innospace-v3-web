@@ -62,6 +62,11 @@ const routes: Array<RouteConfig> = [
     name: 'MyApplication',
     component: () => import(/* webpackChunkName: "my-application" */ '../views/Application.vue'),
   },
+  {
+    path: '/my/profile',
+    name: 'MyProfile',
+    component: () => import(/* webpackChunkName: "my-profile" */ '../views/Profile.vue'),
+  },
 ];
 
 const router = new VueRouter({

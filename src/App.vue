@@ -13,7 +13,7 @@
     </v-app-bar>
 
     <v-main>
-      <router-view @dashboard-mount="toggleDrawer" />
+      <router-view />
     </v-main>
 
     <v-navigation-drawer
