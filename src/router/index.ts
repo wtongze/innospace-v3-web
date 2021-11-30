@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import store from '../store';
+// import store from '../store';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -43,29 +43,60 @@ const routes: Array<RouteConfig> = [
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
   },
   {
-    path: '/my/dashboard',
+    path: '/dashboard',
     name: 'Dashboard',
     component: () => import(/* webpackChunkName: "my-dashboard" */ '../views/Dashboard.vue'),
   },
   {
-    path: '/my/explore',
+    path: '/explore',
     name: 'Explore',
     component: () => import(/* webpackChunkName: "my-explore" */ '../views/Explore.vue'),
   },
   {
-    path: '/my/project',
+    path: '/explore/search',
+    name: 'Search',
+    component: () => import(/* webpackChunkName: "my-search" */ '../views/Search.vue'),
+  },
+  {
+    path: '/explore/new',
+    name: 'ProjectNew',
+    component: () => import(/* webpackChunkName: "my-project-new" */ '../views/ProjectNew.vue'),
+  },
+  {
+    path: '/project',
     name: 'MyProject',
     component: () => import(/* webpackChunkName: "my-project" */ '../views/Project.vue'),
   },
   {
-    path: '/my/application',
+    path: '/application',
     name: 'MyApplication',
     component: () => import(/* webpackChunkName: "my-application" */ '../views/Application.vue'),
   },
   {
-    path: '/my/profile',
+    path: '/profile',
     name: 'MyProfile',
     component: () => import(/* webpackChunkName: "my-profile" */ '../views/Profile.vue'),
+  },
+  {
+    path: '/project/:id',
+    name: 'ProjectTemplate',
+    component: () =>
+      // eslint-disable-next-line implicit-arrow-linebreak
+      import(/* webpackChunkName: "project-template" */ '../views/ProjectTemplate.vue'),
+  },
+  {
+    path: '/position/:id',
+    name: 'PositionTemplate',
+    component: () =>
+      // eslint-disable-next-line implicit-arrow-linebreak
+      import(/* webpackChunkName: "position-template" */ '../views/PositionTemplate.vue'),
+  },
+  {
+    path: '/application/:id',
+    name: 'ApplicationTemplate',
+    component: () =>
+      // eslint-disable-next-line implicit-arrow-linebreak
+      import(/* webpackChunkName: "application-template" */ '../views/ApplicationTemplate.vue'),
   },
 ];
 
@@ -76,9 +107,10 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = store.state.user !== undefined;
-  if (to.path.includes('/my') && isAuthenticated === false) next({ name: 'Login' });
-  else next();
+  // const isAuthenticated = store.state.user !== undefined;
+  // if (to.path.includes('/my') && isAuthenticated === false) next({ name: 'Login' });
+  // else next();
+  next();
 });
 
 export default router;

@@ -69,7 +69,7 @@
               </p>
               <v-btn depressed :block="isXs" color="primary" class="mt-1" width="250">
                 <v-icon left dark> mdi-magnify </v-icon>
-                Search for position
+                Search for project
               </v-btn>
             </v-col>
           </v-row>

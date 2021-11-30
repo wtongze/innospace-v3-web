@@ -8,7 +8,7 @@
       <div class="title" @click="goHome">InnoSpace</div>
       <v-spacer></v-spacer>
       <v-btn text to="/login" v-if="showLoginBtn"> Login </v-btn>
-      <v-btn text @click="$router.push('/my/dashboard')" v-if="showDashboardBtn"> Dashboard </v-btn>
+      <v-btn text @click="$router.push('/dashboard')" v-if="showDashboardBtn"> Dashboard </v-btn>
       <v-btn text @click="logout" v-if="showLogoutBtn"> Logout </v-btn>
     </v-app-bar>
 
@@ -45,14 +45,7 @@
 
       <v-divider></v-divider>
       <v-list nav dense class="mt-3 px-4">
-        <v-list-item
-          link
-          exact
-          class="px-4"
-          v-for="item in navItems"
-          :key="item.title"
-          :to="item.to"
-        >
+        <v-list-item link class="px-4" v-for="item in navItems" :key="item.title" :to="item.to">
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -115,27 +108,27 @@ export default Vue.extend({
     drawer: false,
     navItems: [
       {
-        to: '/my/dashboard',
+        to: '/dashboard',
         icon: 'mdi-view-dashboard',
         title: 'Dashboard',
       },
       {
-        to: '/my/explore',
+        to: '/explore',
         icon: 'mdi-compass',
         title: 'Explore',
       },
       {
-        to: '/my/project',
+        to: '/project',
         icon: 'mdi-cube',
         title: 'Project',
       },
       {
-        to: '/my/application',
+        to: '/application',
         icon: 'mdi-inbox',
         title: 'Application',
       },
       {
-        to: '/my/profile',
+        to: '/profile',
         icon: 'mdi-account',
         title: 'Profile',
       },
@@ -167,13 +160,20 @@ export default Vue.extend({
       ].includes(this.$route.path);
     },
     showNavDrawer() {
-      return this.$route.path.includes('/my/');
+      return ![
+        '/',
+        '/login',
+        '/terms-and-conditions',
+        '/privacy-policy',
+        '/cookies-policy',
+      ].includes(this.$route.path);
     },
     showDashboardBtn() {
       return (
-        !['/login'].includes(this.$route.path) &&
-        !this.$route.path.startsWith('/my/') &&
-        this.$store.state.user
+        ['/', '/terms-and-conditions', '/privacy-policy', '/cookies-policy'].includes(
+          // eslint-disable-next-line comma-dangle
+          this.$route.path
+        ) && this.$store.state.user
       );
     },
     showLoginBtn() {
@@ -271,5 +271,27 @@ export default Vue.extend({
   line-height: 1.25;
   margin-bottom: 4px;
   margin-top: 16px;
+}
+</style>
+
+<style>
+.custom-text-field .v-input__slot {
+  transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+}
+
+.custom-text-field .v-input__slot:hover {
+  background-color: #e1e3e5 !important;
+}
+
+.custom-text-field.v-input--is-focused .v-input__slot:hover {
+  background-color: #f1f3f5 !important;
+}
+
+.custom-text-field div[role='combobox'].v-input__slot {
+  padding: 8px 12px !important;
+}
+
+.custom-text-field div[role='combobox'] .v-select__selections {
+  min-height: 40px;
 }
 </style>

@@ -6,7 +6,7 @@
       <v-tab>Received</v-tab>
     </v-tabs>
     <div>
-      <application-card></application-card>
+      <application-card to="/application/1"></application-card>
     </div>
   </v-container>
 </template>

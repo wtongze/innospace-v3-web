@@ -1,7 +1,7 @@
 <template>
-  <v-container class="profile pa-md-8">
-    <h1 class="mb-4">Profile</h1>
-    <v-row no-gutters class="mx-n2">
+  <v-container class="pa-md-8">
+    <h1>Create a New Project</h1>
+    <v-row no-gutters class="mx-n2 mt-4">
       <v-col :cols="cols">
         <div class="mx-2">
           <p class="text-subtitle-1 font-weight-medium mb-1">Name</p>
@@ -10,37 +10,26 @@
             flat
             background-color="#f1f3f5"
             class="custom-text-field"
-            :value="$store.state.user.displayName"
+            placeholder="Project Name"
           ></v-text-field>
         </div>
       </v-col>
       <v-col :cols="cols">
         <div class="mx-2">
-          <p class="text-subtitle-1 font-weight-medium mb-1">Email</p>
+          <p class="text-subtitle-1 font-weight-medium mb-1">ID</p>
           <v-text-field
             solo
             flat
             background-color="#f1f3f5"
             class="custom-text-field"
-            :value="$store.state.user.email"
+            placeholder="project-id"
+            hint="https://innospace.io/project/"
           ></v-text-field>
         </div>
       </v-col>
       <v-col :cols="cols">
         <div class="mx-2">
-          <p class="text-subtitle-1 font-weight-medium mb-1">Phone Number</p>
-          <v-text-field
-            solo
-            flat
-            background-color="#f1f3f5"
-            class="custom-text-field"
-            placeholder="+1 000-000-0000"
-          ></v-text-field>
-        </div>
-      </v-col>
-      <v-col :cols="cols">
-        <div class="mx-2">
-          <p class="text-subtitle-1 font-weight-medium mb-1">Resume</p>
+          <p class="text-subtitle-1 font-weight-medium mb-1">Logo</p>
           <v-file-input
             solo
             flat
@@ -49,6 +38,42 @@
             prepend-icon=""
             placeholder="Click to upload"
           ></v-file-input>
+        </div>
+      </v-col>
+      <v-col :cols="cols">
+        <div class="mx-2">
+          <p class="text-subtitle-1 font-weight-medium mb-1">Website</p>
+          <v-text-field
+            solo
+            flat
+            background-color="#f1f3f5"
+            class="custom-text-field"
+            placeholder="https://www.example.com"
+          ></v-text-field>
+        </div>
+      </v-col>
+      <v-col :cols="cols">
+        <div class="mx-2">
+          <p class="text-subtitle-1 font-weight-medium mb-1">Contact Name</p>
+          <v-text-field
+            solo
+            flat
+            background-color="#f1f3f5"
+            class="custom-text-field"
+            placeholder="John Doe"
+          ></v-text-field>
+        </div>
+      </v-col>
+      <v-col :cols="cols">
+        <div class="mx-2">
+          <p class="text-subtitle-1 font-weight-medium mb-1">Contact Email</p>
+          <v-text-field
+            solo
+            flat
+            background-color="#f1f3f5"
+            class="custom-text-field"
+            placeholder="john.doe@example.com"
+          ></v-text-field>
         </div>
       </v-col>
       <v-col :cols="cols">
@@ -85,7 +110,7 @@
       </v-col>
       <v-col :cols="cols">
         <div class="mx-2">
-          <p class="text-subtitle-1 font-weight-medium mb-1">Interested Fields</p>
+          <p class="text-subtitle-1 font-weight-medium mb-1">Fields</p>
           <v-combobox
             v-model="fields.model"
             :items="fields.list"
@@ -116,9 +141,21 @@
         </div>
       </v-col>
       <v-col cols="12">
+        <div class="mx-2">
+          <p class="text-subtitle-1 font-weight-medium mb-1">Description</p>
+          <v-textarea
+            solo
+            flat
+            background-color="#f1f3f5"
+            class="custom-text-field"
+            placeholder="Project Description"
+          ></v-textarea>
+        </div>
+      </v-col>
+      <v-col cols="12">
         <div class="mx-2 d-flex justify-md-end">
-          <v-btn color="primary" depressed :block="!mdAndUp">
-            Save Profile
+          <v-btn color="primary" depressed :block="!mdAndUp" to="/project/innospace">
+            Create Project
           </v-btn>
         </div>
       </v-col>
@@ -130,7 +167,7 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'Profile',
+  name: 'ProjectNew',
   data: () => ({
     skills: {
       model: [],
