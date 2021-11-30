@@ -22,7 +22,7 @@
           <v-icon class="mr-2">mdi-pencil</v-icon>
           Edit
         </v-btn>
-        <v-btn color="info" depressed to="/position/new" v-if="mdAndUp">
+        <v-btn color="info" depressed to="/project/innospace/position/new" v-if="mdAndUp">
           <v-icon class="mr-2">mdi-account-plus</v-icon>
           Add Position
         </v-btn>
@@ -110,7 +110,7 @@
               :text="mdAndUp"
               :depressed="!mdAndUp"
               :color="mdAndUp ? 'primary' : '#f1f3f5'"
-              to="/position/123"
+              to="/project/innospace/position/123"
               class="mt-4 mt-md-0"
               >Learn More</v-btn
             >

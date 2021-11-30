@@ -3,7 +3,7 @@
     <h1>Explore</h1>
     <h2 class="font-weight-regular" style="font-size: 20px">What's your role?</h2>
     <div class="role-cards">
-      <div :style="isMobile ? 'width: 100%' : 'width: 80%'" class="mx-auto my-8 role-card">
+      <div style="width: 100%" class="mx-auto my-8 role-card">
         <v-row align="center" class="ma-0" justify="center">
           <v-col :class="isXs ? 'ma-n3 mb-n12' : 'ma-n8'">
             <img
@@ -32,7 +32,7 @@
         </v-row>
       </div>
 
-      <div :style="isMobile ? 'width: 100%' : 'width: 80%'" class="mx-auto my-8 role-card">
+      <div style="width: 100%" class="mx-auto my-8 role-card">
         <v-row align="center" class="ma-0" justify="center">
           <v-col :class="isXs ? 'ma-n3 mb-n12' : 'ma-n8'">
             <img

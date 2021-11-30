@@ -85,7 +85,7 @@ const routes: Array<RouteConfig> = [
       import(/* webpackChunkName: "project-template" */ '../views/ProjectTemplate.vue'),
   },
   {
-    path: '/position/:id',
+    path: '/project/:projectId/position/:id',
     name: 'PositionTemplate',
     component: () =>
       // eslint-disable-next-line implicit-arrow-linebreak
