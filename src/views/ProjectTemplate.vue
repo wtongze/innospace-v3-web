@@ -26,9 +26,29 @@
           <v-icon class="mr-2">mdi-account-plus</v-icon>
           Add Position
         </v-btn>
-        <v-btn color="info" to="/position/new" v-else fab class="fab">
-          <v-icon>mdi-account-plus</v-icon>
-        </v-btn>
+        <v-speed-dial
+          v-model="fab"
+          bottom="bottom"
+          right="right"
+          class="fab"
+          v-else
+        >
+          <template v-slot:activator>
+            <v-btn v-model="fab" color="blue darken-2" dark fab>
+              <v-icon v-if="fab"> mdi-close </v-icon>
+              <v-icon v-else> mdi-cube </v-icon>
+            </v-btn>
+          </template>
+          <v-btn fab dark small color="info">
+            <v-icon>mdi-account-plus</v-icon>
+          </v-btn>
+          <v-btn fab dark small color="primary">
+            <v-icon>mdi-pencil</v-icon>
+          </v-btn>
+          <v-btn fab dark small color="error">
+            <v-icon>mdi-delete</v-icon>
+          </v-btn>
+        </v-speed-dial>
       </div>
     </div>
     <div :class="tagsClass">
@@ -107,6 +127,7 @@ import Vue from 'vue';
 export default Vue.extend({
   name: 'ProjectTemplate',
   data: () => ({
+    fab: false,
     baseClass: [
       'd-flex',
       'flex-column-reverse',
