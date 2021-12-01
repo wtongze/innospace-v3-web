@@ -4,7 +4,8 @@
       <v-row justify="center" align="center" :class="isMobile ? 'my-4' : 'my-16'" no-gutters>
         <v-col class="pa-4" cols="12" md="4">
           <v-alert type="error" v-if="devMode">
-            This app is only used for development and demonstration purposes.
+            This app is only used for development and demonstration purposes. Some features are
+            disabled due to legal compliance.
           </v-alert>
           <h1 class="font-weight-bold text-h3 mb-2">InnoSpace,</h1>
           <h2 class="font-weight-medium" style="line-height: 30px">
