@@ -65,12 +65,6 @@
         </v-col>
         <v-col :cols="cols">
           <div>
-            <div class="font-weight-medium">Type</div>
-            <div>Student</div>
-          </div>
-        </v-col>
-        <v-col :cols="cols">
-          <div>
             <div class="font-weight-medium">Sent / Received</div>
             <div>07/01/2021 03:12 PM</div>
           </div>
@@ -134,7 +128,7 @@ export default Vue.extend({
     },
     cols() {
       if (this.mdAndUp) {
-        return 6;
+        return 4;
       }
       return 12;
     },

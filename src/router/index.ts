@@ -85,11 +85,25 @@ const routes: Array<RouteConfig> = [
       import(/* webpackChunkName: "project-template" */ '../views/ProjectTemplate.vue'),
   },
   {
+    path: '/project/:projectId/position/new',
+    name: 'PositionNew',
+    component: () =>
+      // eslint-disable-next-line implicit-arrow-linebreak
+      import(/* webpackChunkName: "position-new" */ '../views/PositionNew.vue'),
+  },
+  {
     path: '/project/:projectId/position/:id',
     name: 'PositionTemplate',
     component: () =>
       // eslint-disable-next-line implicit-arrow-linebreak
       import(/* webpackChunkName: "position-template" */ '../views/PositionTemplate.vue'),
+  },
+  {
+    path: '/application/new',
+    name: 'ApplicationNew',
+    component: () =>
+      // eslint-disable-next-line implicit-arrow-linebreak
+      import(/* webpackChunkName: "application-new" */ '../views/ApplicationNew.vue'),
   },
   {
     path: '/application/:id',
