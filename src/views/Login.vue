@@ -18,7 +18,7 @@
           prepend-inner-icon="mdi-lock"
           label="Password"
         ></v-text-field>
-        <v-btn color="primary" elevation="0" block class="mb-4 mt-4" to="/dashboard">
+        <v-btn color="primary" elevation="0" block class="mb-4 mt-4" @click="login">
           Sign in
         </v-btn>
         <v-divider></v-divider>
@@ -63,6 +63,20 @@ export default Vue.extend({
       privacyPolicyUrl: '/privacy-policy',
     };
     ui.start('#firebaseui-auth-container', uiConfig);
+  },
+  methods: {
+    login() {
+      if (process.env.NODE_ENV === 'development') {
+        const devUser = {
+          displayName: 'John Doe',
+          email: 'john.doe@example.com',
+          // eslint-disable-next-line global-require
+          photoURL: require('@/assets/logo.svg'),
+        };
+        this.$store.commit('setUser', devUser);
+        this.$router.push('/dashboard');
+      }
+    },
   },
 });
 </script>

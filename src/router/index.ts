@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-// import store from '../store';
+import store from '../store';
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
@@ -121,10 +121,11 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // const isAuthenticated = store.state.user !== undefined;
-  // if (to.path.includes('/my') && isAuthenticated === false) next({ name: 'Login' });
-  // else next();
-  next();
+  const isAuthenticated = store.state.user !== undefined;
+  const authList = ['/dashboard', '/explore', '/project', '/application', '/profile'];
+  if (authList.some((l) => to.path.startsWith(l)) && isAuthenticated === false) {
+    next({ name: 'Login' });
+  } else next();
 });
 
 export default router;

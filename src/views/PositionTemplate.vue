@@ -40,7 +40,7 @@
               <v-icon v-else> mdi-account-plus </v-icon>
             </v-btn>
           </template>
-          <v-btn fab dark small color="info">
+          <v-btn fab dark small color="info" to="/application/new">
             <v-icon>mdi-send</v-icon>
           </v-btn>
           <v-btn fab dark small color="primary">

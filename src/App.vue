@@ -203,16 +203,12 @@ export default Vue.extend({
       }
     },
     async logout() {
-      await firebase.auth().signOut();
-      this.$router.push('/');
-    },
-    toggleDrawer() {
-      if (this.$vuetify.breakpoint.smAndDown) {
-        // setTimeout(() => {
-        //   this.drawer = false;
-        // }, 50);
+      if (process.env.NODE_ENV === 'development') {
+        this.$store.commit('setUser', undefined);
+      } else {
+        await firebase.auth().signOut();
       }
-      console.log(this.drawer);
+      this.$router.push('/');
     },
   },
 

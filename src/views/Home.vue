@@ -3,6 +3,9 @@
     <div class="header px-1">
       <v-row justify="center" align="center" :class="isMobile ? 'my-4' : 'my-16'" no-gutters>
         <v-col class="pa-4" cols="12" md="4">
+          <v-alert type="error" v-if="devMode">
+            This app is only used for development and demonstration purposes.
+          </v-alert>
           <h1 class="font-weight-bold text-h3 mb-2">InnoSpace,</h1>
           <h2 class="font-weight-medium" style="line-height: 30px">
             where <span class="marker-text text-primary">talented student</span> meet
@@ -118,6 +121,9 @@ export default Vue.extend({
     },
     isMd() {
       return this.$vuetify.breakpoint.md;
+    },
+    devMode() {
+      return process.env.NODE_ENV === 'development';
     },
   },
 

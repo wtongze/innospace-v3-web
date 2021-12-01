@@ -26,20 +26,14 @@
           <v-icon class="mr-2">mdi-account-plus</v-icon>
           Add Position
         </v-btn>
-        <v-speed-dial
-          v-model="fab"
-          bottom="bottom"
-          right="right"
-          class="fab"
-          v-else
-        >
+        <v-speed-dial v-model="fab" bottom="bottom" right="right" class="fab" v-else>
           <template v-slot:activator>
             <v-btn v-model="fab" color="blue darken-2" dark fab>
               <v-icon v-if="fab"> mdi-close </v-icon>
               <v-icon v-else> mdi-cube </v-icon>
             </v-btn>
           </template>
-          <v-btn fab dark small color="info">
+          <v-btn fab dark small color="info" to="/project/innospace/position/new">
             <v-icon>mdi-account-plus</v-icon>
           </v-btn>
           <v-btn fab dark small color="primary">
