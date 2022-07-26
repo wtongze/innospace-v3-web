@@ -18,6 +18,7 @@
           prepend-inner-icon="mdi-lock"
           label="Password"
         ></v-text-field>
+        <v-alert type="info">Click signin button below to bypass login</v-alert>
         <v-btn color="primary" elevation="0" block class="mb-4 mt-4" @click="login">
           Sign in
         </v-btn>
