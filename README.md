@@ -1,6 +1,6 @@
 # InnoSpace v3 Web
 
-> `/src` folder may contain copyrighted material from other sources. This repo is used to demonstrate code skills for job interviews only.
+> This repo may contain copyrighted assets (e.g. images, animations, and etc) from other sources. This repo is used to demonstrate code skills for job interviews only.
 
 © All rights reserved
 
